@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro
+
+  template:
+    metadata:
+      labels:
+        app: micro
+    spec:
+      containers:
+      - name: micro
+        image: 12345.dkr.ecr.ap-south-1.amazonaws.com/micro-server:latest
+        command: ["/micro"]
+        ports:
+        - containerPort: 8080
+        - containerPort: 8081
+        - containerPort: 8082
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: ap-south-1-ecr-registry
