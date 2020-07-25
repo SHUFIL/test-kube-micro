@@ -20,15 +20,15 @@ spec:
           imagePullPolicy: Always
           env:
           - name: MICRO_SERVER_ADDRESS
-            value: "micro-deployment:30590"
+            value: "0.0.0.0:8080"
           - name: MICRO_BROKER
             value: "nats"
           - name: MICRO_BROKER_ADDRESS
-            value: "nats-cluster:6222"
+            value: "nats-cluster"
           - name: MICRO_REGISTRY
             value: "etcd"
           - name: MICRO_REGISTRY_ADDRESS
-            value: "etcd-restore-operator:19999"
+            value: "etcd-restore-operator"
 
       imagePullSecrets:
       - name: ap-south-1-ecr-registry
