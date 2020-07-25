@@ -1,0 +1,9 @@
+ubuntu@server5:~/kubernetes/helm-install/micro$ kubectl get svc
+NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+etcd-restore-operator   ClusterIP   10.99.197.52     <none>        19999/TCP           47h
+kubernetes              ClusterIP   10.96.0.1        <none>        443/TCP             4d
+micro-deployment        NodePort    10.108.17.120    <none>        8080:30590/TCP      80m
+nats-client             ClusterIP   10.109.237.159   <none>        4222/TCP            47h
+nats-cluster            ClusterIP   10.105.203.101   <none>        6222/TCP            47h
+nats-headless           ClusterIP   None             <none>        4222/TCP,6222/TCP   47h
+nats-monitoring         ClusterIP   10.107.184.142   <none>        8222/TCP            47h
