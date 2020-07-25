@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: greeter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greeter-srv
+  template:
+    metadata:
+      labels:
+        app: greeter-srv
+    spec:
+      containers:
+        - name: greeter
+          args: ["/hello-service"]
+          image: 12345.dkr.ecr.ap-south-1.amazonaws.com/micro:latest
+          imagePullPolicy: Always
+          env:
+          - name: MICRO_SERVER_ADDRESS
+            value: "micro-deployment:30590"
+          - name: MICRO_BROKER
+            value: "nats"
+          - name: MICRO_BROKER_ADDRESS
+            value: "nats-cluster:6222"
+          - name: MICRO_REGISTRY
+            value: "etcd"
+          - name: MICRO_REGISTRY_ADDRESS
+            value: "etcd-restore-operator:19999"
+
+      imagePullSecrets:
+      - name: ap-south-1-ecr-registry
